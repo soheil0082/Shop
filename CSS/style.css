@@ -1,0 +1,23 @@
+.card {
+  padding: 0;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+nav {
+  margin-bottom: 100px;
+}
+
+.row {
+  justify-content: center;
+}
+
+.red {
+  color: red;
+}
+
+.rounded {
+  border-radius: 5px;
+}
