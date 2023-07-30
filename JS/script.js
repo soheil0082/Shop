@@ -1,5 +1,6 @@
 let itemContainer = document.querySelector(".row");
 let cart = document.querySelector("tbody");
+let priceDisplay = document.querySelector("span");
 console.log(itemContainer);
 itemContainer.addEventListener("click", (e) => {
   if (e.target.nodeName == "A") {
@@ -77,6 +78,8 @@ function addToCart(id) {
     }
   });
 
+  priceDisplay.innerHTML = Number(priceDisplay.innerHTML) + tempItem.price;
+
   cart.innerHTML += `
   <tr data-id="${tempItem.id}" class="t">
     <th scope="row">
@@ -89,7 +92,7 @@ function addToCart(id) {
       />
     </th>
     <td>${tempItem.name}</td>
-    <td>${tempItem.price} $</td>
+    <td><span>${tempItem.price}</span> <span>$</spn></td>
     <td>
       <span class="material-symbols-outlined red" data-id="${tempItem.id}"> delete </span>
     </td>
@@ -99,6 +102,9 @@ function addToCart(id) {
 
 function removeFromCart(id) {
   let item = document.querySelector(`.t[data-id="${id}"]`);
+  priceDisplay.innerHTML =
+    Number(priceDisplay.innerHTML) -
+    Number(item.children[2].children[0].innerHTML);
   let itemCard = document.querySelector(`.card-body[data-id="${id}"]`);
   itemCard.innerHTML += `<a href="#" class="btn btn-primary" data-id="${id}">Add to cart</a>`;
   item.remove();
